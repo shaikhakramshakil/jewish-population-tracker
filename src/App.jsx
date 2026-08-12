@@ -4,8 +4,10 @@ import GlobeView from './components/GlobeView';
 import LeftPanel from './components/LeftPanel';
 import StatsPanel from './components/StatsPanel';
 import AudioPlayer from './components/AudioPlayer';
+import WelcomeScreen from './components/WelcomeScreen';
 
 export default function App() {
+  const [showWelcome, setShowWelcome] = useState(true);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [isAutoRotate, setIsAutoRotate] = useState(true);
 
@@ -21,6 +23,11 @@ export default function App() {
 
   return (
     <div className="app-container">
+      {/* Welcome Landing Screen */}
+      {showWelcome && (
+        <WelcomeScreen onEnter={() => setShowWelcome(false)} />
+      )}
+
       {/* Invisible Background Audio Player */}
       <AudioPlayer />
 

@@ -964,4 +964,145 @@ body, html, #root {
   }
 }
 
+/* ========================================================= */
+/* WELCOME SCREEN OVERLAY */
+/* ========================================================= */
+/* ========================================================= */
+/* MINIMAL WELCOME OVERLAY WITH COIN SHOWER */
+/* ========================================================= */
+.welcome-overlay-minimal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #020408;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.coin-shower-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.thrown-coin {
+  position: absolute;
+  top: -60px;
+  user-select: none;
+  animation: fallCoin linear infinite;
+}
+
+@keyframes fallCoin {
+  0% {
+    top: -60px;
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 105vh;
+    opacity: 0;
+  }
+}
+
+.welcome-card-minimal {
+  position: relative;
+  z-index: 10;
+  max-width: 440px;
+  width: 100%;
+  background: rgba(9, 13, 22, 0.92);
+  border: 2px solid #0038b8;
+  border-radius: 20px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 40px rgba(0, 56, 184, 0.4), 0 20px 60px rgba(0, 0, 0, 0.95);
+}
+
+.coin-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.big-coin-sticker {
+  font-size: 38px;
+  filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.4));
+  animation: bounceSticker 2s infinite ease-in-out;
+}
+
+.big-coin-sticker:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.big-coin-sticker:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes bounceSticker {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.welcome-goyim-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.5px;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+/* Israel Flag Blue & White Palette (#0038b8) */
+.israel-flag-text {
+  color: #0038b8;
+  background: linear-gradient(135deg, #0038b8 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(0, 56, 184, 0.5);
+}
+
+.welcome-enter-btn-minimal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #0038b8 0%, #0284c7 100%);
+  color: #ffffff;
+  border: 1px solid #38bdf860;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0, 56, 184, 0.5);
+  transition: all 0.2s ease;
+}
+
+.welcome-enter-btn-minimal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 56, 184, 0.8);
+  background: linear-gradient(135deg, #0284c7 0%, #0038b8 100%);
+}
+
+.welcome-enter-btn-minimal:active {
+  transform: translateY(1px);
+}
+
+
 
