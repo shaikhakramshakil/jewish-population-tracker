@@ -5,10 +5,14 @@ import { ALL_HOTSPOT_DOTS, COUNTRY_POPULATION_DATA } from '../data/jewishPopulat
 export default function GlobeView({ selectedCountry, onSelectCountry, isAutoRotate, setIsAutoRotate }) {
   const globeEl = useRef();
   const [countriesGeoJson, setCountriesGeoJson] = useState([]);
-  const [dimensions, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight
-  });
+  const getDimensions = () => {
+    return {
+      width: window.innerWidth,
+      height: window.innerWidth <= 768 ? 340 : window.innerHeight
+    };
+  };
+
+  const [dimensions, setDimensions] = useState(getDimensions());
 
   // Fetch standard country boundary polygons GeoJSON
   useEffect(() => {
@@ -22,10 +26,7 @@ export default function GlobeView({ selectedCountry, onSelectCountry, isAutoRota
 
   useEffect(() => {
     const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
+      setDimensions(getDimensions());
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);

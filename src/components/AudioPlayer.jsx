@@ -25,16 +25,22 @@ export default function AudioPlayer() {
       window.removeEventListener('click', handleInteraction);
       window.removeEventListener('keydown', handleInteraction);
       window.removeEventListener('pointerdown', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('scroll', handleInteraction);
     };
 
     window.addEventListener('click', handleInteraction);
     window.addEventListener('keydown', handleInteraction);
     window.addEventListener('pointerdown', handleInteraction);
+    window.addEventListener('touchstart', handleInteraction, { passive: true });
+    window.addEventListener('scroll', handleInteraction, { passive: true });
 
     return () => {
       window.removeEventListener('click', handleInteraction);
       window.removeEventListener('keydown', handleInteraction);
       window.removeEventListener('pointerdown', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('scroll', handleInteraction);
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
